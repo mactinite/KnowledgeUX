@@ -1,0 +1,16 @@
+ use https://developer.nytimes.com/ APIs to create a demo to display
+
+	Most puplar and search articles
+	
+		Be able to follow links by adding new tab for each article.
+		Provide CRUD options for each article in local cache at results or inidvidual article level
+		
+			Rating (1-5 stars)
+			add / remove to favorites
+			Add / Edit / Remove notes
+		
+		
+	
+	
+	Be able to view and manage Favorites list from local cache
+	Close all tabs individually or all at once
