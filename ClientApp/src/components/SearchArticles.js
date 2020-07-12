@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { Form, Input, Spinner, Col, Row } from 'reactstrap';
+import React, { useState, useContext } from 'react';
+import { Button, Form, Input, Spinner, Col, Row } from 'reactstrap';
+import { UserDataContext } from './UserData';
+
+/**
+ * Function component + hooks example. Set up for searching articles.
+ * @param {onArticleClick} props 
+ */
 const SearchArticles = (props) => {
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -40,6 +46,7 @@ const SearchArticles = (props) => {
 }
 
 const SearchResults = ({ articles, handleArticleClick }) => {
+    const { toggleFavorite, isFavorite } = useContext(UserDataContext);
 
     return (
         <table className='table table-striped' aria-labelledby="tabelLabel">
@@ -55,7 +62,7 @@ const SearchResults = ({ articles, handleArticleClick }) => {
                     <tr key={article.date}>
                         <td><a href="javascript:void" onClick={() => handleArticleClick(article)}>{article.headline.main}</a></td>
                         <td>{article.abstract}</td>
-                        <td><input type="checkbox" id={`${article.id}-favorite`} /></td>
+                        <td><Button size="sm" onClick={(e) => { toggleFavorite(article) }} id={`${article.id}-favorite`} >{isFavorite(article.uri) ? "Remove" : "Add"}</Button></td>
                     </tr>
                 )}
             </tbody>
